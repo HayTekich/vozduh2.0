@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Сервисный инженер · ЭР-Телеком</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: #f5f9fc;
+            color: #1a2b3c;
+            line-height: 1.5;
+            padding: 20px 16px 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -12px rgba(0,20,40,0.2);
+            padding: 28px 20px 40px;
+            transition: all 0.2s;
+        }
+
+        /* ГЛАВНЫЙ ЭКРАН */
+        .hero {
+            background: linear-gradient(135deg, #0b2a4a 0%, #1c4e7a 100%);
+            color: white;
+            border-radius: 28px;
+            padding: 40px 24px 36px;
+            margin-bottom: 36px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,40,70,0.25);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            background: rgba(255,255,255,0.12);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+            margin-top: 4px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .hero .company-tag {
+            margin-top: 20px;
+            font-size: 1rem;
+            background: rgba(255,215,0,0.15);
+            padding: 10px 18px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid rgba(255,215,0,0.25);
+            color: #ffde7a;
+            font-weight: 500;
+        }
+
+        /* БЛОКИ */
+        .block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e9f0f5;
+            transition: 0.1s;
+        }
+
+        .block-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #0b2a4a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .block-title span {
+            background: #dce9f5;
+            border-radius: 40px;
+            font-size: 1rem;
+            padding: 2px 14px;
+            color: #1a4b6e;
+        }
+
+        .simple-desc {
+            font-size: 1.2rem;
+            background: #f1f7fb;
+            padding: 20px 22px;
+            border-radius: 20px;
+            border-left: 6px solid #1c6b9e;
+            color: #0a263b;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 24px;
+        }
+
+        .task-item, .skill-item {
+            background: #f8fafc;
+            padding: 16px 18px;
+            border-radius: 16px;
+            border-bottom: 2px solid #dce8f0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .task-item .emoji, .skill-item .emoji {
+            font-size: 1.5rem;
+            min-width: 36px;
+        }
+
+        .skill-item {
+            background: #f0f5fa;
+            border-bottom-color: #b8d0e0;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 12px;
+            margin-top: 8px;
+        }
+
+        .badge {
+            background: #e7eef6;
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1a4465;
+        }
+
+        .timeline {
+            background: #f5faff;
+            border-radius: 20px;
+            padding: 20px 20px 10px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 18px;
+            align-items: flex-start;
+        }
+
+        .timeline-item .time {
+            font-weight: 600;
+            color: #1c6b9e;
+            min-width: 70px;
+            background: #dce9f5;
+            padding: 2px 12px;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .timeline-item p {
+            background: white;
+            padding: 8px 16px 8px 12px;
+            border-radius: 16px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            margin: 0;
+            flex: 1;
+        }
+
+        .why-role {
+            background: #e5eff8;
+            border-radius: 20px;
+            padding: 20px 24px;
+            font-size: 1.1rem;
+            border-left: 8px solid #0b2a4a;
+        }
+
+        /* ИНТЕРАКТИВ (карточки-тест) */
+        .interactive {
+            background: #f2f9fe;
+            border-radius: 28px;
+            padding: 24px 20px 28px;
+            border: 1px solid #cde0ed;
+            margin-top: 10px;
+        }
+
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 14px;
+            margin: 20px 0 10px;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 20px;
+            padding: 18px 12px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            border: 2px solid #d6e4f0;
+            cursor: pointer;
+            transition: 0.15s;
+            font-weight: 500;
+        }
+
+        .quiz-card:hover {
+            background: #e4f0fc;
+            border-color: #1c6b9e;
+            transform: scale(0.97);
+        }
+
+        .quiz-card.selected {
+            background: #1c6b9e;
+            border-color: #0b2a4a;
+            color: white;
+            box-shadow: 0 6px 12px rgba(0,60,120,0.2);
+        }
+
+        .quiz-feedback {
+            margin: 18px 0 6px;
+            font-size: 1.05rem;
+            padding: 14px 18px;
+            border-radius: 40px;
+            background: white;
+            border: 1px solid #c0d8ea;
+            min-height: 4rem;
+        }
+
+        .btn-reset {
+            background: #0b2a4a;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            padding: 10px 28px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.15s;
+            margin-top: 6px;
+        }
+
+        .btn-reset:hover {
+            background: #1c4e7a;
+            transform: scale(0.96);
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #55738b;
+            text-align: center;
+            border-top: 1px solid #d8e5ef;
+            padding-top: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 16px 12px; }
+            .hero h1 { font-size: 2rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+            .block-title { font-size: 1.4rem; }
+            .simple-desc { font-size: 1rem; }
+            .timeline-item { flex-wrap: wrap; }
+            .timeline-item .time { min-width: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ГЛАВНЫЙ ЭКРАН -->
+        <div class="hero">
+            <h1>Сервисный инженер</h1>
+            <div class="sub">Цифровой портрет профессии</div>
+            <div class="company-tag">⚡ ЭР-Телеком Холдинг</div>
+            <div style="margin-top: 16px; font-size: 0.95rem; opacity: 0.8;">«Тот, кто делает связь надёжной, а сервис — человечным»</div>
+        </div>
+
+        <!-- КТО ЭТО ПРОСТЫМИ СЛОВАМИ -->
+        <div class="block">
+            <div class="block-title">👤 Кто это простыми словами</div>
+            <div class="simple-desc">
+                Сервисный инженер — это <strong>технический эксперт и дипломат в одном лице</strong>. 
+                Он помогает клиентам настроить оборудование, решает сложные вопросы с интернетом и ТВ, 
+                а ещё объясняет всё без сложных терминов. В ЭР-Телекоме он — главный борец за качество сервиса.
+            </div>
+        </div>
+
+        <!-- 5-7 РАБОЧИХ ЗАДАЧ -->
+        <div class="block">
+            <div class="block-title">⚙️ Рабочие задачи <span>5–7</span></div>
+            <div class="grid-2col">
+                <div class="task-item"><span class="emoji">📡</span> Диагностика оборудования на месте и удалённо</div>
+                <div class="task-item"><span class="emoji">📶</span> Настройка Wi-Fi, роутеров, ТВ-приставок</div>
+                <div class="task-item"><span class="emoji">🧑‍💻</span> Консультация клиентов по техническим вопросам</div>
+                <div class="task-item"><span class="emoji">🛠️</span> Плановые проверки и профилактика сетей</div>
+                <div class="task-item"><span class="emoji">📋</span> Оформление отчётов и заявок в CRM</div>
+                <div class="task-item"><span class="emoji">🚀</span> Помощь при подключении новых услуг</div>
+            </div>
+        </div>
+
+        <!-- HARD & SOFT SKILLS -->
+        <div class="block">
+            <div class="block-title">🧠 Навыки</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px 16px; margin-bottom: 8px;">
+                <div style="background: #e2ecf5; border-radius: 20px; padding: 8px 18px; font-weight: 600; color: #0b2a4a;">Hard skills</div>
+                <div style="background: #ddebf5; border-radius: 20px; padding: 8px 18px; font-weight: 600; color: #0b2a4a;">Soft skills</div>
+            </div>
+            <div class="grid-2col">
+                <div>
+                    <div class="skill-item"><span class="emoji">🖥️</span> Сети TCP/IP, DNS, DHCP</div>
+                    <div class="skill-item"><span class="emoji">📱</span> Настройка оборудования (MikroTik, Zyxel)</div>
+                    <div class="skill-item"><span class="emoji">🔍</span> Диагностика: ping, tracert, Wi-Fi-анализаторы</div>
+                    <div class="skill-item"><span class="emoji">📊</span> Работа с CRM и биллингом</div>
+                </div>
+                <div>
+                    <div class="skill-item"><span class="emoji">🗣️</span> Коммуникация без жаргона</div>
+                    <div class="skill-item"><span class="emoji">🧘</span> Стрессоустойчивость</div>
+                    <div class="skill-item"><span class="emoji">🤝</span> Клиентоориентированность</div>
+                    <div class="skill-item"><span class="emoji">🧩</span> Системное мышление</div>
+                </div>
+            </div>
+            <div class="badge-group" style="margin-top: 14px;">
+                <span class="badge">🎓 Высшее/среднее тех. (радиотехника, ИТ)</span>
+                <span class="badge">📜 Сертификаты Cisco, MikroTik — плюс</span>
+            </div>
+        </div>
+
+        <!-- КАК НАЧАТЬ КАРЬЕРУ СТУДЕНТУ -->
+        <div class="block">
+            <div class="block-title">🎯 Как начать карьеру студенту</div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding-left: 4px;">
+                <li style="background: #f0f6fc; border-radius: 40px; padding: 10px 20px;">📘 <strong>1. База:</strong> курсы по сетям, ОС, электротехнике</li>
+                <li style="background: #f0f6fc; border-radius: 40px; padding: 10px 20px;">🧪 <strong>2. Практика:</strong> стажировка в ЭР-Телеком (техподдержка, монтаж)</li>
+                <li style="background: #f0f6fc; border-radius: 40px; padding: 10px 20px;">📄 <strong>3. Резюме:</strong> акцент на решении проблем и работе с людьми</li>
+                <li style="background: #f0f6fc; border-radius: 40px; padding: 10px 20px;">🚀 <strong>4. Рост:</strong> после 1–2 лет — Senior, наставник, эксперт</li>
+            </ul>
+        </div>
+
+        <!-- ОДИН ДЕНЬ ИЗ ЖИЗНИ -->
+        <div class="block">
+            <div class="block-title">⏳ Один день из жизни</div>
+            <div class="timeline">
+                <div class="timeline-item"><span class="time">09:00</span><p>Проверка заявок, планирование выездов</p></div>
+                <div class="timeline-item"><span class="time">10:30</span><p>Выезд к клиенту: настройка роутера, Wi-Fi</p></div>
+                <div class="timeline-item"><span class="time">13:00</span><p>Обед и быстрый созвон с коллегами</p></div>
+                <div class="timeline-item"><span class="time">14:30</span><p>Удалённая диагностика, консультация по ТВ</p></div>
+                <div class="timeline-item"><span class="time">17:00</span><p>Заполнение отчётов, закрытие заявок</p></div>
+                <div class="timeline-item"><span class="time">18:30</span><p>Планирование следующего дня, обмен опытом</p></div>
+            </div>
+        </div>
+
+        <!-- ПОЧЕМУ РОЛЬ ВАЖНА ДЛЯ ЭР-ТЕЛЕКОМ -->
+        <div class="block">
+            <div class="block-title">🏢 Почему роль важна для ЭР-Телеком</div>
+            <div class="why-role">
+                <strong>🔹 Лицо компании</strong> — сервисный инженер формирует впечатление о бренде. <br/>
+                <strong>🔹 Качество сервиса</strong> — снижает отток клиентов и повышает NPS. <br/>
+                <strong>🔹 Экспертиза</strong> — помогает развивать продукты, опираясь на реальный опыт.
+            </div>
+        </div>
+
+        <!-- ИНТЕРАКТИВ: КАРТОЧКИ-ТЕСТ -->
+        <div class="interactive">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span style="font-size: 1.8rem;">🧩</span>
+                <span style="font-size: 1.4rem; font-weight: 600; color: #0b2a4a;">Интерактив: что делает сервисный инженер?</span>
+            </div>
+            <p style="margin: 8px 0 14px; color: #1f4665;">Выбери самую частую задачу (нажми на карточку)</p>
+
+            <div class="quiz-grid" id="quizGrid">
+                <div class="quiz-card" data-answer="correct">Настройка Wi-Fi и оборудования</div>
+                <div class="quiz-card" data-answer="wrong">Разработка мобильного приложения</div>
+                <div class="quiz-card" data-answer="wrong">Строительство оптоволокна</div>
+                <div class="quiz-card" data-answer="wrong">Бухгалтерский учёт</div>
+            </div>
+
+            <div class="quiz-feedback" id="quizFeedback">💡 Нажми на карточку, чтобы узнать ответ</div>
+            <button class="btn-reset" id="resetQuiz">⟳ Сбросить</button>
+            <div style="margin-top: 14px; font-size: 0.9rem; color: #31648b;">* Реальные задачи сервисного инженера в ЭР-Телеком</div>
+        </div>
+
+        <div class="footer-note">
+            © ЭР-Телеком Холдинг · Цифровой портрет профессии · Сервисный инженер
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            const cards = document.querySelectorAll('.quiz-card');
+            const feedback = document.getElementById('quizFeedback');
+            const resetBtn = document.getElementById('resetQuiz');
+            let selected = false;
+
+            function clearSelected() {
+                cards.forEach(c => c.classList.remove('selected'));
+                selected = false;
+            }
+
+            function setFeedback(text, isCorrect = null) {
+                feedback.textContent = text;
+                feedback.style.background = isCorrect === true ? '#d7eddc' : (isCorrect === false ? '#fce4e4' : 'white');
+                feedback.style.borderColor = isCorrect === true ? '#2b7a4b' : (isCorrect === false ? '#b34a4a' : '#c0d8ea');
+            }
+
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (selected) {
+                        // если уже выбран — ничего не делаем, либо можно сбросить? оставляем как есть.
+                        // но пользователь может кликнуть на другую — разрешим, но только если не выбран.
+                        // реализуем: если уже есть выбор, то игнорируем клики, кроме сброса.
+                        if (this.classList.contains('selected')) {
+                            // можно показать подсказку
+                            feedback.textContent = '✅ Уже выбрано: ' + this.textContent.trim() + ' (нажми "Сбросить")';
+                            feedback.style.background = '#e3f0fa';
+                            feedback.style.borderColor = '#1c6b9e';
+                            return;
+                        } else {
+                            // если выбрана другая карта, но уже есть выбор — игнорируем
+                            feedback.textContent = '⏳ Сначала сбросьте текущий выбор (кнопка "Сбросить")';
+                            feedback.style.background = '#fff3d6';
+                            feedback.style.borderColor = '#b88a3a';
+                            return;
+                        }
+                    }
+
+                    // если нет выбора — обрабатываем
+                    clearSelected();
+                    this.classList.add('selected');
+                    selected = true;
+
+                    const isCorrect = this.dataset.answer === 'correct';
+                    if (isCorrect) {
+                        setFeedback('✅ Верно! Настройка Wi-Fi и оборудования — основная задача сервисного инженера.', true);
+                    } else {
+                        setFeedback('❌ Не совсем. Самая частая задача — настройка оборудования и Wi-Fi.', false);
+                    }
+                });
+            });
+
+            resetBtn.addEventListener('click', function() {
+                clearSelected();
+                setFeedback('💡 Нажми на карточку, чтобы узнать ответ', null);
+                feedback.style.background = 'white';
+                feedback.style.borderColor = '#c0d8ea';
+                selected = false;
+            });
+
+            // небольшой бонус: при загрузке показываем нейтральное состояние
+            setFeedback('💡 Нажми на карточку, чтобы узнать ответ', null);
+        })();
+    </script>
+
+    <!-- Ручные правки после ИИ: 
+         1. Убраны общие фразы, добавлены конкретные задачи (настройка роутеров, CRM)
+         2. Скорректирован блок "один день" — реалистичные временные слоты
+         3. Интерактив сделан карточками с проверкой, вместо простой кнопки
+    -->
+</body>
+</html>
